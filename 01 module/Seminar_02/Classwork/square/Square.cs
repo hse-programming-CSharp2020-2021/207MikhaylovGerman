@@ -13,7 +13,7 @@ namespace square
         // метод вычисляет длину окружности 
         public static double L(double r)
         {
-            return Math.PI * 2* r;
+            return Math.PI * 2 * r;
 
         }
 
@@ -30,8 +30,8 @@ namespace square
             }
             double S = Program.S(radius);
             double L = Program.L(radius);
-            Console.WriteLine($"Площадь круга = {S:F}");
-            Console.WriteLine($"Длина окружности= {L:F}");
+            Console.WriteLine($"Площадь круга = {S:F2}");
+            Console.WriteLine($"Длина окружности= {L:F2}");
 
 
         }

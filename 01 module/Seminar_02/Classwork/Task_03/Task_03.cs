@@ -1,4 +1,5 @@
 ﻿using System;
+// можно считывать ошибки ввода через do{}while , а можно через if
 
 namespace Task_03
 {
@@ -6,22 +7,37 @@ namespace Task_03
     {
         static void Main(string[] args)
         {
-            double y = Console.ReadLine();
-            double z = Console.ReadLine();
-            double x = Console.ReadLine();
-            double tmp;
+            Console.WriteLine("Введите x, y, z");
+            double x;
+            double y;
+            double z;
+            // проверка корректности ввода данных 
+            if (!double.TryParse(Console.ReadLine(), out x) ||
+                !double.TryParse(Console.ReadLine(), out y) ||
+                !double.TryParse(Console.ReadLine(), out z))
+            {
+                Console.WriteLine("Ошибка ввода ");
+                return;
+            }
+
+            double tmp = 0;
             if (y > z)
-            {   z = tmp;
+            {
+                tmp = z;
                 z = y;
                 y = tmp;
             }
             if (x > y)
             {
-                x = tmp;
+                tmp = x;
                 x = y;
                 y = tmp;
             }
-             
+            Console.WriteLine(x.ToString("F2"));
+            Console.WriteLine(y.ToString("F2"));
+            Console.WriteLine(z.ToString("F2"));
+
+
 
         }
     }
