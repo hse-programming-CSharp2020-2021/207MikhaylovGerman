@@ -123,30 +123,39 @@ namespace Homework_01
         static void Algorithm_executor_and_tester(ref int a, ref int b)
         {
             long ellapledTicks;
+            int time;
             int result;
             // run qcd_euclid_improved.
             ellapledTicks = DateTime.Now.Ticks;
+            time = DateTime.Now.Second;
             result = Program.qcd_euclid_improved(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов");
+            time = DateTime.Now.Second - time;
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
 
             /// run gcd_euclid_enxanced.
             ellapledTicks = DateTime.Now.Ticks;
+            time = DateTime.Now.Second;
             result = Program.gcd_euclid_enxanced(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов");
+            time = DateTime.Now.Second - time;
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
 
             // run gcd_euclid.
             ellapledTicks = DateTime.Now.Ticks;
+            time = DateTime.Now.Second;
             result = Program.gcd_euclid(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов");
+            time = DateTime.Now.Second - time;
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
 
             // run gcd_gummy.
             ellapledTicks = DateTime.Now.Ticks;
+            time = DateTime.Now.Second;
             result = Program.gcd_gummy(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов");
+            time = DateTime.Now.Second - time;
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
         }
         static void Main(string[] args)
         {
