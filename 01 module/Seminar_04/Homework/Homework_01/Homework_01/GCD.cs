@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 /* Python algorithm (for heart).
  * from time import time
@@ -43,7 +44,8 @@ using System.Threading;
 namespace Homework_01
 {
     class Program
-    {   /// <summary>
+    {
+        /// <summary>
         /// Algorithm gummy
         /// </summary>
         /// <param name="a">first number</param>
@@ -123,39 +125,35 @@ namespace Homework_01
         static void Algorithm_executor_and_tester(ref int a, ref int b)
         {
             long ellapledTicks;
-            int time;
+            System.Diagnostics.Stopwatch time;
             int result;
             // run qcd_euclid_improved.
             ellapledTicks = DateTime.Now.Ticks;
-            time = DateTime.Now.Second;
+            time = Stopwatch.StartNew();
             result = Program.qcd_euclid_improved(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            time = DateTime.Now.Second - time;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time.Elapsed} секунд ");
 
             /// run gcd_euclid_enxanced.
             ellapledTicks = DateTime.Now.Ticks;
-            time = DateTime.Now.Second;
+            time = Stopwatch.StartNew();
             result = Program.gcd_euclid_enxanced(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            time = DateTime.Now.Second - time;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time.Elapsed} секунд ");
 
             // run gcd_euclid.
             ellapledTicks = DateTime.Now.Ticks;
-            time = DateTime.Now.Second;
+            time = Stopwatch.StartNew();
             result = Program.gcd_euclid(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            time = DateTime.Now.Second - time;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time.Elapsed} секунд ");
 
             // run gcd_gummy.
             ellapledTicks = DateTime.Now.Ticks;
-            time = DateTime.Now.Second;
+            time = Stopwatch.StartNew();
             result = Program.gcd_gummy(ref a, ref b);
             ellapledTicks = DateTime.Now.Ticks - ellapledTicks;
-            time = DateTime.Now.Second - time;
-            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time} секунд ");
+            Console.WriteLine($"Результат {result}, выполнено за {ellapledTicks} тактов, за {time.Elapsed} секунд ");
         }
         static void Main(string[] args)
         {
