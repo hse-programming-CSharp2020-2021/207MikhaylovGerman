@@ -12,7 +12,7 @@ namespace Task_02
                 Console.WriteLine("Введите N");
             } while (!int.TryParse(Console.ReadLine(), out N));
 
-            char[][] Array1 = new char[N][];
+            char[][] Array1 = new char[(N + 1) / 2][];
 
             FillArray(ref Array1, N);
             PrintArray(ref Array1);
