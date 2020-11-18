@@ -5,6 +5,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_7", "Homework_01\Task_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_8", "Task_8\Task_8.csproj", "{FE8E3603-8719-44AD-865F-EE1A208A509D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_9", "Task_9\Task_9.csproj", "{4D4BADC7-4710-490A-882A-23BB245A6198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_10", "Task_10\Task_10.csproj", "{6D9F074C-D88E-4EEC-AE4F-BCD0D48B7A41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_11", "Task_11\Task_11.csproj", "{52F446E7-EC9F-439F-95C0-27F195FF675D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +25,17 @@ Global
 		{FE8E3603-8719-44AD-865F-EE1A208A509D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE8E3603-8719-44AD-865F-EE1A208A509D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE8E3603-8719-44AD-865F-EE1A208A509D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4BADC7-4710-490A-882A-23BB245A6198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4BADC7-4710-490A-882A-23BB245A6198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4BADC7-4710-490A-882A-23BB245A6198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4BADC7-4710-490A-882A-23BB245A6198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D9F074C-D88E-4EEC-AE4F-BCD0D48B7A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D9F074C-D88E-4EEC-AE4F-BCD0D48B7A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D9F074C-D88E-4EEC-AE4F-BCD0D48B7A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D9F074C-D88E-4EEC-AE4F-BCD0D48B7A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F446E7-EC9F-439F-95C0-27F195FF675D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F446E7-EC9F-439F-95C0-27F195FF675D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F446E7-EC9F-439F-95C0-27F195FF675D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F446E7-EC9F-439F-95C0-27F195FF675D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
