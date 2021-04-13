@@ -2,6 +2,7 @@
 
 namespace Task_3
 {
+    [Serializable]
     public class Quadratic
     {
         public int Discriminant { get; set; }

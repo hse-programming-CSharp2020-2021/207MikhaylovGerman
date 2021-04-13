@@ -15,11 +15,13 @@ namespace Task_3
         public static void SolutionReal(List<Quadratic> eq)
         {
             for (int i = 0; i < eq.Count; i++)
-            {   
-                if (eq[i].Discriminant < 0) continue;
+            {
                 Console.WriteLine(eq.ToString() + "  дискриминант = " +
-                    eq[i].Discriminant);
-                Console.WriteLine($"\tКорни: Х1={eq[i].X1:g3}  \tX2={eq[i].X2:g3}");
+            eq[i].Discriminant);
+                if (eq[i].Discriminant >= 0)
+                {
+                    Console.WriteLine($"\tКорни: Х1={eq[i].X1:g3}  \tX2={eq[i].X2:g3}");
+                }
             }
             
         }
@@ -36,7 +38,7 @@ namespace Task_3
         {
             using (FileStream streamOut = new FileStream(nameFile, FileMode.Create))
             {
-                XmlSerializer writer = new XmlSerializer(typeof(List<Quadratic>), new Type[] { typeof(Quadratic) });
+                XmlSerializer writer = new XmlSerializer(typeof(List<Quadratic>), new Type[] { typeof(Quadratic)});
 
                 List<Quadratic> list = new List<Quadratic>();
 
@@ -66,7 +68,7 @@ namespace Task_3
         {
             using (FileStream streamIn = new FileStream(fileName, FileMode.Open))
             {
-                XmlSerializer reader = new XmlSerializer(typeof(List<Quadratic>), new Type[] { typeof(Quadratic) });
+                XmlSerializer reader = new XmlSerializer(typeof(List<Quadratic>), new Type[] { typeof(Quadratic)});
                 List<Quadratic> eq;
                 while (true)
                     try
