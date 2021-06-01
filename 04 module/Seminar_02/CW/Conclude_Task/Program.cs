@@ -3,13 +3,14 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Conclude_Task
 {
     class Program
     {
-        static void Main(string[] args)
+        static async System.Threading.Tasks.Task Main(string[] args)
         {
             Random random = new Random();
 
@@ -17,57 +18,55 @@ namespace Conclude_Task
 
             for (int i = 0; i < 10; i++)
             {
-                symbls[i] = new ColorConsoleClass((char)random.Next(10,50), random.Next(), random.Next(), random.Next());
+                symbls[i] = new ColorConsoleClass((char)random.Next(10, 50), random.Next(), random.Next(), random.Next());
             }
 
             // DataContract ------------------------------------------
 
-            DataContractSerializer contractSerializer = new DataContractSerializer(typeof(ColorConsoleClass[]));
+            DataContract(symbls);
 
-            // Сериализация
-            using (Stream file = new FileStream("Ser.xml", FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                contractSerializer.WriteObject(file, symbls);
-            }
-
-
-            // Десериализация
-            ConsoleSymbolClass[] deserial1;
-            using (Stream file = File.OpenRead("Ser.xml"))
-            {
-                deserial1 = (ColorConsoleClass[])contractSerializer.ReadObject(file);
-                for (int i = 0; i < deserial1.Length; i++)
-                {
-                    //Console.WriteLine($"JSON -  {deserial1[i].Symb},  {deserial1[i].X}, {deserial1[i].Y}");
-                }
-            }
 
             // Binary ------------------------------------------
 
-            // Сериализация
-            using (Stream file = new FileStream("Ser.bin", FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(file, symbls);
-            }
-
-
-            // Десериализация
-            ConsoleSymbolClass[] deserial2;
-            using (Stream file = File.OpenRead("Ser.bin"))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-
-                deserial2 = (ColorConsoleClass[])formatter.Deserialize(file);
-                for (int i = 0; i < deserial2.Length; i++)
-                {
-                    //Console.WriteLine($"JSON -  {deserial2[i].Symb},  {deserial2[i].X}, {deserial2[i].Y}");
-                }
-            }
+            Binary(symbls);
 
 
             // XML ------------------------------------------
 
+            XML(symbls);
+
+            // JSON ------------------------------------------
+
+            JSON(symbls);
+
+        }
+
+        private static void JSON(ColorConsoleClass[] symbls)
+        {
+            // Сериализация
+            using (Stream file = new FileStream("JsonSer.json", FileMode.Create, FileAccess.Write, FileShare.None))
+            using (StreamWriter writer = new StreamWriter(file))
+            {
+                writer.Write(JsonSerializer.Serialize(symbls));
+            }
+
+
+            // Десериализация
+            ConsoleSymbolClass[] deserial4;
+            using (Stream file = File.OpenRead("Ser.json"))
+            using (StreamReader reader = new StreamReader(file))
+            {
+
+                deserial4 = JsonSerializer.Deserialize<ColorConsoleClass[]>(reader.ReadToEnd());
+                for (int i = 0; i < deserial4.Length; i++)
+                {
+                    Console.WriteLine($"JSON -  {deserial4[i].Symb},  {deserial4[i].X}, {deserial4[i].Y}");
+                }
+            }
+        }
+
+        private static void XML(ColorConsoleClass[] symbls)
+        {
             // Сериализация
             using (Stream file = new FileStream("Ser.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
@@ -85,35 +84,55 @@ namespace Conclude_Task
                 deserial3 = (ColorConsoleClass[])formatter.Deserialize(file);
                 for (int i = 0; i < deserial3.Length; i++)
                 {
-                    //Console.WriteLine($"JSON -  {deserial3[i].Symb},  {deserial3[i].X}, {deserial3[i].Y}");
+                    Console.WriteLine($"JSON -  {deserial3[i].Symb},  {deserial3[i].X}, {deserial3[i].Y}");
                 }
             }
+        }
 
-            // JSON ------------------------------------------
-
+        private static void Binary(ColorConsoleClass[] symbls)
+        {
             // Сериализация
-            using (Stream file = new FileStream("JsonSer.json", FileMode.Create, FileAccess.Write, FileShare.None))
-            using (StreamWriter writer = new StreamWriter(file))
+            using (Stream file = new FileStream("Ser.bin", FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                writer.Write(JsonSerializer.Serialize(symbls));
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(file, symbls);
             }
 
 
             // Десериализация
-            ConsoleSymbolClass[] deserial4;
-            using (Stream file = File.OpenRead("Ser.json"))
-            using (StreamReader reader = new StreamReader(file))
+            ConsoleSymbolClass[] deserial2;
+            using (Stream file = File.OpenRead("Ser.bin"))
             {
+                BinaryFormatter formatter = new BinaryFormatter();
 
-                deserial4 = JsonSerializer.Deserialize<ColorConsoleClass[]>(reader.ReadToEnd());
-                for (int i = 0; i < deserial3.Length; i++)
+                deserial2 = (ColorConsoleClass[])formatter.Deserialize(file);
+                for (int i = 0; i < deserial2.Length; i++)
                 {
-                    //Console.WriteLine($"JSON -  {deserial3[i].Symb},  {deserial3[i].X}, {deserial3[i].Y}");
+                    Console.WriteLine($"JSON -  {deserial2[i].Symb},  {deserial2[i].X}, {deserial2[i].Y}");
                 }
             }
+        }
 
+        private static void DataContract(ColorConsoleClass[] symbls)
+        {
+            DataContractSerializer contractSerializer = new DataContractSerializer(typeof(ColorConsoleClass[]));
 
+            // Сериализация
+            using (Stream file = new FileStream("Ser.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                contractSerializer.WriteObject(file, symbls);
+            }
 
+            // Десериализация
+            ConsoleSymbolClass[] deserial1;
+            using (Stream file = File.OpenRead("Ser.xml"))
+            {
+                deserial1 = (ColorConsoleClass[])contractSerializer.ReadObject(file);
+                for (int i = 0; i < deserial1.Length; i++)
+                {
+                    Console.WriteLine($"JSON -  {deserial1[i].Symb},  {deserial1[i].X}, {deserial1[i].Y}");
+                }
+            }
         }
     }
 
